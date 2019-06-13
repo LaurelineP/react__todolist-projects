@@ -1,0 +1,67 @@
+$mainColor: #1A9;
+$darkerMain: #2AE;
+
+@keyframes bigger {
+  
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content:center;
+  justify-items: center;
+  align-items: center;
+  background-color: $mainColor;
+  background: linear-gradient(-45deg, $mainColor, $darkerMain);
+  background-repeat: no-repeat;
+  height: 100vh;
+  font-family: Lato;
+}
+
+input {
+  outline: none;
+  border: 0;
+}
+
+
+.todolist-container {
+    display: flex;
+    flex-direction: column;
+    .title {
+      text-align: center;
+      .wa {
+        font-weight: 200;
+      }
+    }
+    .todolist-input {
+      width: 400px;
+      font-size: 1em;
+      padding: 15px;
+      border-radius: 5px;
+      transition: padding .2s;
+
+      &::placeholder {
+        color: #999;
+        font-weight: 200;
+      }
+      &:focus {
+        padding: 20px 15px;
+        transition: padding .2s;
+      }
+      
+    }
+    .todolist-list {
+      margin: 20px 0 0 0;
+      border-radius: 5px;
+      .todo-container {
+        margin: 20px 0;
+        background-color: #EEE;
+        padding: 5px 20px 5px 20px;
+        box-shadow : 0 0 8px 0 #088;
+        border-radius: 3px;
+        font-size: 1.1em;
+        color: #333;
+      }
+    }
+
+}
