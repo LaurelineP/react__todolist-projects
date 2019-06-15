@@ -6,15 +6,16 @@ import React, { useState } from 'react'
 		const message = `What's next ?`
 		const handleTodo = ( e, action ) => {
 			const [ CREATE, UPDATE, DELETE ] = [ 'create', 'update', 'delete' ];
-			switch ( action ) {
+			switch ( action.type ) {
 				case CREATE :
 						if( e.target.value && e.key === 'Enter' ) {
 							updateTodo([
-								...todolist,
 								{
 									text: inputValue,
 									completed: false
-								}
+								},
+								...todolist,
+
 			
 							])
 							updateInput('')
@@ -25,6 +26,7 @@ import React, { useState } from 'react'
 					break;
 
 				case DELETE :
+					console.log('delet', action)
 					break;
 				default:;
 			}
@@ -41,7 +43,7 @@ import React, { useState } from 'react'
 							className = "todolist-input"
 							placeholder = { message }
 							onChange = { e => updateInput( e.target.value ) }
-							onKeyPress = { e => handleTodo( e, 'create') }
+							onKeyPress = { e => handleTodo( e,  { type : "create" }) }
 							/>
 					<div className = "todolist-list">
 						{
@@ -50,9 +52,9 @@ import React, { useState } from 'react'
 									<div className = "todo-container" key = { idx } >
 										<p className = "todo-element "> { todo.text }</p>
 										<span
-											className = "cross-icon"
-											onClick = { e => handleTodo( e, 'delete')}
-										/>
+											className = "todo-close-btn"
+											onClick = { e => handleTodo( e, { type : "delete", payload: { index: idx } })}
+											/>
 									</div>
 								)
 							})

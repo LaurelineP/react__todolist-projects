@@ -54,6 +54,8 @@ input {
       margin: 20px 0 0 0;
       border-radius: 5px;
       .todo-container {
+      width: inherit;
+
         margin: 20px 0;
         background-color: #EEE;
         padding: 5px 20px 5px 20px;
@@ -61,7 +63,35 @@ input {
         border-radius: 3px;
         font-size: 1.1em;
         color: #333;
+        display: flex;
+        .todo-element {
+          width: 96%;
+          overflow: hidden;
+        }
+        .todo-close-btn {
+          position: relative;
+          right: - 2%;
+          top: 15px;
+          cursor: pointer;
+          height: 15px;
+          &::before, &::after {
+            content: "";
+            display: block;
+            height: 2px;
+            width: 15px;
+            background-color: #999;
+            transition: background-color .2s;
+          }
+          &::before {
+            transform: rotate(-45deg) translateX(-1.5px); 
+          }
+          &::after {
+            transform: rotate(45deg) translateX(-1px);
+          }
+          &:hover::before, &:hover::after {
+            background-color: #555;
+          }
+        }
       }
     }
-
-}
+  }
